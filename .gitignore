@@ -9,3 +9,5 @@ node_modules
 .env.production
 
 venv/
+
+__pycache__/

@@ -1,10 +1,22 @@
 FROM node:20
 
 WORKDIR /app
-COPY package.json ./
+
+# Copy package files
+COPY package*.json ./
 COPY vite.config.js ./
+
+# Install dependencies
 RUN npm install
-COPY . .
+
+# Copy source files
+COPY src/ ./src/
+COPY public/ ./public/
+COPY index.html ./
+
+
+# Build the app
 RUN npm run build
 
+# Start the app
 CMD ["npm", "run", "dev", "--", "--host"]
